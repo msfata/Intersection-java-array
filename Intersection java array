@@ -1,0 +1,39 @@
+package com.interviews;
+
+import java.util.ArrayList;
+import java.util.List;
+/*
+ * 
+ * */
+public class Intersection {
+
+	public static void main(String[] args) {
+		String s = removeComas(0, new String[] { "1,2,3", "1,2,4" });
+		String s1 = removeComas(1, new String[] { "1,2,3", "1,2,4" });
+		List<String> l = compareTwoString(s, s1);
+		l.forEach(v -> System.out.println(v));
+	}
+
+	public static List<String> compareTwoString(String s1, String s2) {
+		List<String> list = new ArrayList<String>();
+		for (int i = 0; i < s1.length(); i++) {
+			for (int j = 0; j < s2.length(); j++) {
+				if (s1.charAt(i) == s2.charAt(j)) {
+					list.add("" + s1.charAt(i));
+				}
+			}
+		}
+		return list;
+	}
+
+	private static String removeComas(int index, String... array) {
+		String stToReturn = "";
+		char[] ch = array[index].toCharArray();
+		for (int i = 0; i < ch.length; i++) {
+			if (ch[i] != ',') {
+				stToReturn += ch[i];
+			}
+		}
+		return stToReturn;
+	}
+}
